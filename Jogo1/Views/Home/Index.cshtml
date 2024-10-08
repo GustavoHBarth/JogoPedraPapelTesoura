@@ -1,0 +1,31 @@
+﻿@model Jogo1.Models.Jogo
+
+@{
+    ViewData["Title"] = "Jogo Pedra, Papel e Tesoura";
+}
+
+<h2>Jogo Pedra, Papel e Tesoura</h2>
+
+<form method="post" asp-action="Jogar">
+    <div>
+        <label>Escolha uma opção:</label><br />
+        <input type="radio" name="escolha" value="1" /> Pedra<br />
+        <input type="radio" name="escolha" value="2" /> Papel<br />
+        <input type="radio" name="escolha" value="3" /> Tesoura<br />
+    </div>
+    <button type="submit">Jogar</button>
+</form>
+
+@if (Model.Resultado != null)
+{
+    <h3>Resultado:</h3>
+    <p>Você escolheu: @Model.EscolhaUsuario</p>
+    <img src="~/images/@(Model.EscolhaUsuario.ToLower()).png" alt="@Model.EscolhaUsuario" width="100" />
+    <br />
+
+    <p>O computador escolheu: @Model.EscolhaMaquina</p>
+    <img src="~/images/@(Model.EscolhaMaquina.ToLower()).png" alt="@Model.EscolhaMaquina" width="100" />
+    <br />
+
+    <p>@Model.Resultado</p>
+}
